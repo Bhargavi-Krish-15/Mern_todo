@@ -1,0 +1,62 @@
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.create_form input{
+  width: 300px;
+  padding: 10px;
+  border-bottom: 2px solid #61dafb;
+  outline: none;
+}
+.create_form button{
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* .todo {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo:hover {
+  background-color: #ddd;
+} */
+
+.todo {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width */
+  min-height: 100px; /* Minimum height */
+  word-wrap: break-word; /* Ensures long words break */
+  overflow: auto; /* Adds scroll if content exceeds */
+}
+
+.todo:hover {
+  background-color: #cff3f3;
+}
+
+/* Uniform button styling */
+.todo button {
+  padding: 5px 10px; /* Adjust padding as needed */
+  margin: 5px;
+  border: none;
+  background-color: #a6c6d1;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.todo button:hover {
+  background-color: #d2b5b5;
+}
