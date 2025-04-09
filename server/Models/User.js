@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Define the User schema
 // The User schema defines the structure of the user data in the database

@@ -1,8 +1,9 @@
 const User = require('../Models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { createSecretToken } = require('../util/SecretToken');
 
-module.exports.Register = async (req, res, next) => {
+
+module.exports.Register = async (req, res) => {
     try{
         // Extract the username, password, and email from the request body
         //use the values obtained from req.body to create the new user after that has occurred.
@@ -16,7 +17,13 @@ module.exports.Register = async (req, res, next) => {
         }
 
         // If the user does not exist, create a new user
-        const newUser = await User.create({username, password, email});
+        const newUser = new User({
+            username,
+            password,
+            email
+        });
+        console.log("user saved successfully");
+        await newUser.save();
         // Create a token for the user
         //MongoDB always assigns a new user with a unique _id
         const accessToken = createSecretToken(newUser._id);
@@ -28,10 +35,50 @@ module.exports.Register = async (req, res, next) => {
             // Set the cookie options
             withCredentials: true,
             httpOnly: false,
+            
         });
         res.status(201).json({message: "User created successfully", success: true, newUser});
-        next();
+        
     }catch(err){
         res.status(500).json({message: 'Error registering user', err})
+    }
+}
+
+module.exports.Login = async (req, res) => {
+    try{
+        const {email, password} = req.body;
+        // Find the user by email
+        if(!email || !password){
+            return res.status(400).json({message: 'Please fill all fields'});
+        }
+        const user = await User.findOne({email});
+        // If the user does not exist, return an error response
+        if(!user){
+            return res.status(400).json({message: 'User does not exist'});
+        }
+        // Check if the password is correct
+        // The password is compared using bcrypt's compare function
+        const correctPassword = await bcrypt.compare(password, user.password);
+        // If the password is incorrect, return an error response
+        if(!correctPassword){
+            return res.status(400).json({message: 'Incorrect password'});
+        }
+        // Create a token for the user
+        //MongoDB always assigns a new user with a unique _id
+        const accessToken = createSecretToken(user._id);
+        // Send the token to the client
+        // Set the token as a cookie in the response
+        // The token is sent as a cookie to the client for authentication
+        res.cookie('access_token', accessToken, {
+            // Set the cookie options
+            withCredentials: true,
+            httpOnly: false,
+           
+        });
+        res.status(200).json({message: "User logged in successfully", success: true, user});
+        
+    }
+    catch(err){
+        res.status(500).json({message: 'Error logging in', err})
     }
 }

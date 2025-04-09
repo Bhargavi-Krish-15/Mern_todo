@@ -9,13 +9,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const TodoModel = require('./Models/Todo');
-require('dotenv').config();
+// require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config(); 
 const app = express();
 
 
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/AuthRoute');
-
+app.use("/", authRoute);
 app.use(cors({
     origin: 'http://localhost:5175',
     credentials: true,
@@ -27,7 +29,7 @@ app.use(cors({
 //It's added to the code above along with the authRoute that the application will utilize.
 app.use(cookieParser());
 app.use(express.json());
-app.use("/", authRoute);
+
 
 mongoose.connect('mongodb+srv://admin:admin1234@cluster0.oytyhsh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => {
