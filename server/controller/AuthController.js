@@ -22,7 +22,7 @@ module.exports.Register = async (req, res) => {
             password,
             email
         });
-        console.log("user saved successfully");
+        console.log("user saved successfully insde the register function");
         await newUser.save();
         // Create a token for the user
         //MongoDB always assigns a new user with a unique _id
@@ -40,7 +40,7 @@ module.exports.Register = async (req, res) => {
         res.status(201).json({message: "User created successfully", success: true, newUser});
         
     }catch(err){
-        res.status(500).json({message: 'Error registering user', err})
+        res.status(500).json({message: 'Error registering user', message: err.message})
     }
 }
 
@@ -79,6 +79,6 @@ module.exports.Login = async (req, res) => {
         
     }
     catch(err){
-        res.status(500).json({message: 'Error logging in', err})
+        res.status(500).json({message: 'Error logging in', message: err.message})
     }
 }
