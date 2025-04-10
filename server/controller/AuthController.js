@@ -5,10 +5,12 @@ const { createSecretToken } = require('../util/SecretToken');
 
 module.exports.Register = async (req, res) => {
     try{
+        console.log("request body: "+ req.body);
+        console.log("inside the register function");
         // Extract the username, password, and email from the request body
         //use the values obtained from req.body to create the new user after that has occurred.
         const {username, password, email} = req.body;
-
+        console.log("username: "+ username);
         // Check if the user already exists
         // If the user already exists, return an error response
         const existingUser = await User.findOne({email});
@@ -22,6 +24,7 @@ module.exports.Register = async (req, res) => {
             password,
             email
         });
+        console.log("new user"+ newUser)
         console.log("user saved successfully insde the register function");
         await newUser.save();
         // Create a token for the user
@@ -40,7 +43,8 @@ module.exports.Register = async (req, res) => {
         res.status(201).json({message: "User created successfully", success: true, newUser});
         
     }catch(err){
-        res.status(500).json({message: 'Error registering user', message: err.message})
+        console.log("inside the register function catch block");
+        res.status(500).json({message: 'Error registering user', message: 'error message:'+err.message})
     }
 }
 

@@ -12,11 +12,11 @@ const TodoModel = require('./Models/Todo');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/AuthRoute');
 const TodoRoutes = require('./routes/TodoRoutes');
+const connectDB = require('./db');
 
-// require('dotenv').config();
 //1) first load teh env variables
 const dotenv = require('dotenv');
-dotenv.config(); 
+dotenv.config({ path: './.env' }); 
 //2)initialize the express application
 const app = express();
 // 3) Configure CORS middleware
@@ -28,17 +28,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // 5. Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch(err => {
-    console.log('Error connecting to MongoDB', err);
-})
+connectDB();
 
 //6) Routes
 app.use("/", authRoute);
+console.log("after using authRoute");
 app.use("/todo", TodoRoutes);
+
 
 //7) Start the server
 app.listen(process.env.PORT, () => {
