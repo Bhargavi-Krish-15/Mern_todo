@@ -12,33 +12,38 @@ const TodoModel = require('./Models/Todo');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/AuthRoute');
 const TodoRoutes = require('./routes/TodoRoutes');
-const connectDB = require('./db');
-
-//1) first load teh env variables
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' }); 
-//2)initialize the express application
+const connectDB = require('./db');
+connectDB();
+
+
 const app = express();
-// 3) Configure CORS middleware
-app.use(cors({
-  origin: '*',
-}));
-// 4) Parse cookies and JSON
-//The cookie-parser manages cookie-based sessions or extracts data from cookies.
-//It's added to the code above along with the authRoute that the application will utilize.
+
+app.use(cors({origin: '*',}));
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// 5. Connect to MongoDB
-connectDB();
 
-//6) Routes
 app.use("/", authRoute);
-console.log("after using authRoute");
+
+app.use("/get" , (req, res) => {
+  res.send("Hello World")
+}
+)
+
 app.use("/todo", TodoRoutes);
 
 
-//7) Start the server
-app.listen(process.env.PORT, () => {
-  console.log('Server is running on port 3000');
+
+const port = process.env.PORT
+
+if (!port) {
+  console.error('Error: PORT environment variable is not set.');
+  process.exit(1); 
+}
+app.listen(port, () => {
+  console.log('Server is running on port ' + port);
 })
+
