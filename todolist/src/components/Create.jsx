@@ -7,8 +7,9 @@ const Create = ({ addTodo }) => {
     const handleAddTodo = async() => {
     try {
         // Make a POST request to add the new task
-        const response = await axios.post('http://localhost:4000/add', {
+        const response = await axios.post('http://localhost:3000/todo/add', {
             task: task, // Send the task as part of the request body
+            // user_id: 
         });
 
         console.log('Task added successfully:', response.data);

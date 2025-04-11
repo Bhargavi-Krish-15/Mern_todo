@@ -9,9 +9,11 @@ const Home = () => {
   const fetchTodos = async () => {
     try {
       // get request to fetch todos from server
-      const response = await axios.get("http://localhost:4000/get");
+      const response = await axios.get("http://localhost:3000/todo/get");
       // update the state with the fetched todos
+      console.log(response);
       setTodos(response.data);
+      console.log("Todos fetched successfully:", response.data);
     } catch (err) {
       console.log("Error fetching todos:", err);
     }
@@ -38,7 +40,7 @@ const Home = () => {
   const handleTodoDelete = async (id) => {
     try {
       // delete request to remove the todo by its id
-      const result = await axios.delete(`http://localhost:4000/delete/${id}`);
+      const result = await axios.delete(`http://localhost:3000/todo/delete/${id}`);
       console.log(result);
       // update the state by filtering out the deleted todo
       setTodos(todos.filter((todo) => todo._id !== id));
@@ -51,7 +53,7 @@ const Home = () => {
   const handleTodoComplete = async (id) => {
     try {
       // put request to mark the todo as completed by its id
-      const result = await axios.put(`http://localhost:4000/complete/${id}`);
+      const result = await axios.put(`http://localhost:3000/todo/complete/${id}`);
       console.log(result);
       // update the state by marking the todo as completed, if the provided id matches
       // ...todo - spread operator to copy the existing todo properties

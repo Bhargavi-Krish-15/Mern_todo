@@ -1,4 +1,5 @@
 const { Register, Login} = require('../controller/AuthController');
+const { userVerification } = require('../middleware/AuthMiddleware');
 const router = require('express').Router();
 
 //the /register route has a post method attached to it, when it's been called, 
@@ -8,5 +9,6 @@ router.post('/register', Register);
 console.log("after the register route");
 //the /login route has a post method attached to it, when it's been called,
 router.post("/login", Login);
+router.post("/", userVerification);
 
 module.exports = router;

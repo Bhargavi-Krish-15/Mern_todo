@@ -20,7 +20,9 @@ dotenv.config({ path: './.env' });
 //2)initialize the express application
 const app = express();
 // 3) Configure CORS middleware
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 // 4) Parse cookies and JSON
 //The cookie-parser manages cookie-based sessions or extracts data from cookies.
 //It's added to the code above along with the authRoute that the application will utilize.
@@ -38,5 +40,5 @@ app.use("/todo", TodoRoutes);
 
 //7) Start the server
 app.listen(process.env.PORT, () => {
-  console.log('Server is running on port 4000');
+  console.log('Server is running on port 3000');
 })
