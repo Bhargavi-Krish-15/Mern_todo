@@ -1,10 +1,21 @@
-const express = require('express');
+
 const TodoModel = require('../Models/Todo');
-const { getTasks } = require('../controller/TokenController');
-const router = express.Router();
 
 
-    router.get('/get', getTasks);
+
+const getTasks = async (req, res) => {
+    try {
+       const tasks = await TodoModel.find();
+       if (!tasks) {
+           return res.status(404).json({message: 'No tasks found'});
+       }
+       res.status(200).json(tasks);
+    }
+    catch (error) {
+        res.status(500).json({message: 'Error fetching todos', error})
+    }
+}
+
     router.post('/add', (req, res) => {
         const task = req.body.task;
         TodoModel.create({task: task})
@@ -38,4 +49,4 @@ const router = express.Router();
         })
     })
 
-module.exports = router;
+module.exports = {getTasks};
