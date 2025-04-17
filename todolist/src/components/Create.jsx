@@ -6,10 +6,25 @@ const Create = ({ addTodo }) => {
 
     const handleAddTodo = async() => {
     try {
+
+        // Get the user ID from local storage
+        const user_str = localStorage.getItem('user');
+        // Parse the user ID from local storage
+        if (!user_str) {
+            console.error('User not Logged in');
+            return;
+        }
+        const user = JSON.parse(user_str);
+
         // Make a POST request to add the new task
-        const response = await axios.post('http://localhost:3000/todo/add', {
+        const response = await axios.post('http://localhost:4000/todo/add', {
             task: task, // Send the task as part of the request body
-            // user_id: 
+            user: user._id // Send the user ID as part of the request body, 
+        },{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('access_token')}` // Add token
+            },
+            withCredentials: true // Include credentials in the request
         });
 
         console.log('Task added successfully:', response.data);

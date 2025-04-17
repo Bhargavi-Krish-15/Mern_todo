@@ -20,7 +20,10 @@ connectDB();
 
 const app = express();
 
-app.use(cors({origin: '*',}));
+app.use(cors({origin: '*',
+  origin: 'http://localhost:5180', // Your frontend URL exactly
+  credentials: true // This is important when sending cookies
+}));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -37,7 +40,7 @@ app.use("/todo", TodoRoutes);
 
 
 
-const port = process.env.PORT
+const port = process.env.PORT;
 
 if (!port) {
   console.error('Error: PORT environment variable is not set.');

@@ -86,3 +86,28 @@ module.exports.Login = async (req, res) => {
         res.status(500).json({message: 'Error logging in', message: err.message})
     }
 }
+
+module.exports.Logout = async (req, res) => {
+    try{
+        // Clear the cookie
+        res.clearCookie('access_token');
+        res.status(200).json({message: 'User logged out successfully', success: true});
+    }catch(err){
+        res.status(500).json({message: 'Error logging out', message: err.message})
+    }
+}
+
+// module.exports.Logout = async (req, res) => {
+//   try {
+//     // Clear the access token cookie
+//     res.clearCookie('access_token', {
+//       httpOnly: true,
+//       secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+//       sameSite: 'strict'
+//     });
+
+//     res.status(200).json({ message: 'Logged out successfully', success: true });
+//   } catch (err) {
+//     res.status(500).json({ message: 'Error logging out', error: err.message });
+//   }
+// };

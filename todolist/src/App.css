@@ -1,14 +1,17 @@
 .home{
-  display: flex;
-  flex-direction: column;
+  /* display: flex; 
+  flex-direction: column; */
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
+   min-height: 100vh;
+  background-color: #f0f0f0;
+  padding: 30px;
 }
 .create_form input{
   width: 300px;
   padding: 10px;
-  border-bottom: 2px solid #61dafb;
+  border-bottom: 2px solid #a4c031;
   outline: none;
 }
 .create_form button{
@@ -17,8 +20,115 @@
   background-color: black;
   color: white;
   cursor: pointer;
+  margin-left: 10px;
 }
 
+.login {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Horizontally center items */
+  justify-content: center; /* Vertically center items */
+  min-height: 100vh;
+  background-color: #ecede9;
+  padding: 30px;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Fill form width */
+  width: 300px; /* Match the input width */
+}
+
+
+.login input{
+  padding: 10px;
+  border-bottom: #a4c031 2px solid;
+  
+}
+
+.login button {
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.login_container{
+  border: 2px solid #dae1c5;
+  padding: 90px;
+  border-radius: 10px;
+  width: 300px; 
+  background-color: rgb(229, 232, 228);
+  margin: 2 auto; 
+}
+.new_user{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 20px;
+  color: #a5c22f;
+}
+
+.new_user a {
+  margin-left: 10px;
+  color: black;
+}
+
+.register{
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Horizontally center items */
+  justify-content: center; /* Vertically center items */
+  min-height: 100vh;
+  background-color: #ecede9;
+  padding: 30px;
+}
+.register form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Fill form width */
+  width: 300px; /* Match the input width */
+}
+
+.register input{
+  padding: 10px;
+  border-bottom: #a4c031 2px solid;
+  
+}
+
+.register button {
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.register_user{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 20px;
+  color: #a5c22f;
+}
+
+.register_user a {
+  margin-left: 10px;
+  color: black;
+}
+
+.register_container{
+  border: 2px solid #dae1c5;
+  padding: 90px;
+  border-radius: 10px;
+  width: 300px; 
+  background-color: rgb(229, 232, 228);
+  margin: 2 auto; 
+}
+
+.icon-container{
+  display: flex;
+  gap: 10px;
+  margin-left: 250px; 
+}
 /* .todo {
   background-color: #f0f0f0;
   padding: 10px;
@@ -32,7 +142,7 @@
 } */
 
 .todo {
-  background-color: #f0f0f0;
+  background-color:#a4c031;
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
@@ -41,10 +151,18 @@
   min-height: 100px; /* Minimum height */
   word-wrap: break-word; /* Ensures long words break */
   overflow: auto; /* Adds scroll if content exceeds */
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  border: 2px solid #2d2b2b; /* Optional border */
+  margin-bottom: 32px;
+  margin-top: 22px;
 }
 
 .todo:hover {
-  background-color: #cff3f3;
+  background-color: #b4c0c0;
 }
 
 /* Uniform button styling */
@@ -52,11 +170,77 @@
   padding: 5px 10px; /* Adjust padding as needed */
   margin: 5px;
   border: none;
-  background-color: #a6c6d1;
+  background-color: #9f9d9d;
   cursor: pointer;
   border-radius: 3px;
+  /* color: rgb(146, 131, 131); */
 }
 
 .todo button:hover {
   background-color: #d2b5b5;
 }
+
+
+.todo_container{
+  border: 2px  solid #ecede9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  background-color: rgb(229, 232, 228);
+  padding-left: 40px;
+}
+
+
+.todo_heading{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+
+}
+
+.todo_title{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+
+}
+
+.welcome_user{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  color: #a5c22f;
+
+}
+
+.title_heading{
+  /* display: inline-block; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout_button{
+  margin: 0 0 0 550px;
+  background-color:#a4c031;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  padding: 2px 20px;
+
+  /* move to right */
+  /* margin-left: 550px;
+  margin-top: 20px; */
+}
+.logout_button:hover{
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+.logout_button:focus{
+  box-shadow: rgba(16, 184, 202, 0.3) 2px 8px 4px -6px;
+}
+
+
+/* .item{
+  display: inline-block;
+
+} */
