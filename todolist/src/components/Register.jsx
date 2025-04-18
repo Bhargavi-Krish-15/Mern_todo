@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import {FaSignInAlt} from 'react-icons/fa';
+import { FiLogIn } from "react-icons/fi";
+import{FaEnvelope, FaLock, FaUser} from 'react-icons/fa';
 
 const Register = () => {
 
@@ -40,17 +41,31 @@ const Register = () => {
     }
 
   return (
-    <div className='register'>
-        <div className='register_container'>
-            <h1 className='welcome_user'>Register</h1>
+    <div className='login'>
+        <div className='green_container brand_section'>
+            <h1>TaskHUB</h1>
+            <p>StayPlanned StayProductive</p>
+        </div>
+        <div className='login_container'>
+            <h1 className='tag_line'>Plan. Act. Conquer.</h1>
+            <br/>
             <p>{message}</p>
             <form onSubmit={ handleRegister }>
-                <input type="text" placeholder='Username' onChange={(e) => setUsername(e.target.value)} required/><br/>
-                <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required/><br/>
-                <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br/>
+                <div className='input_group'>
+                    <FaUser className='mail_icon'/>
+                    <input type="text" placeholder='Username' onChange={(e) => setUsername(e.target.value)} required/><br/>
+                </div>
+                <div className='input_group'>
+                    <FaEnvelope className='mail_icon'/>
+                    <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required/><br/>
+                </div>
+                <div className='input_group'>
+                    <FaLock className='mail_icon'/>
+                    <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br/>
+                </div>
                 <button type="submit">Register</button>
-                <p className='register_user'>Already have an account? 
-                    <a href='/login'><FaSignInAlt/></a>
+                <p className='new_user'>Already have an account? 
+                    <a href='/login'><FiLogIn/></a>
                 </p>
             </form>
         </div>

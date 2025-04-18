@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import{FaUserPlus} from 'react-icons/fa';
+import{FaEye, FaEnvelope, FaLock} from 'react-icons/fa';
 
 const Login = () => {
     const [email, setEmail] = React.useState('');
@@ -39,15 +39,26 @@ const Login = () => {
 
   return (
     <div className='login'>
+        <div className='green_container brand_section'>
+            <h1>TaskHUB</h1>
+            <p>StayPlanned StayProductive</p>
+        </div>
         <div className='login_container'>
-            <h1 className='welcome_user'>Login</h1>
+            <h1 className='tag_line'>Let's Get this Bread, Dive In..</h1>
+            <br/>
             <p>{message}</p>
             <form onSubmit={ handleLogin } className='login_form'>
-                <input typer="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required/> <br/>
-                <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br/>
+                <div className='input_group'>
+                    <FaEnvelope className='mail_icon'/>
+                    <input typer="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required/> <br/>
+                </div>
+                <div className='input_group'>
+                    <FaLock className='mail_icon'/>
+                    <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br/>
+                </div>
                 <button type="submit">Login</button>
-                <p className='new_user'>New User? 
-                    <a href='/register'><FaUserPlus /></a>
+                <p className='new_user'>Never been organized?
+                    <a href='/register'><FaEye /></a>
                 </p>
             </form>
         </div>
