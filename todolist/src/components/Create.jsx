@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const Create = ({ addTodo }) => {
+const Create = ({ addTodo, setTodoCount, todoCount }) => {
     const [task, setTask] = useState('');
 
     const handleAddTodo = async() => {
@@ -29,6 +29,7 @@ const Create = ({ addTodo }) => {
 
         console.log('Task added successfully:', response.data);
         addTodo(response.data.result); // Call the addTodo function to update the state
+        setTodoCount(todoCount + 1); // Increment the todo count
         // Clear the input field after adding the task
         setTask('');
 

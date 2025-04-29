@@ -2,11 +2,22 @@ import React, { useState, useEffect, use } from "react";
 import Create from "./Create";
 import axios from "axios";
 import { FaTrash, FaCheck } from 'react-icons/fa';
+import Notes from "./notes/Notes";
+
 
 const Home = () => {
   // store todos state
   const [todos, setTodos] = useState([]);
   const [username, setUsername] = useState("");
+  const [activeContent, setActiveContent] = useState("todos");
+  const [todoCount, setTodoCount] = useState(0);
+  const [notesCount, setNotesCount] = useState(null);
+
+
+  const handleCountFromNotes = (count) => {
+      setNotesCount(count);
+    };
+
 
   //check if user is logged in
   useEffect(() => {
@@ -41,6 +52,7 @@ const Home = () => {
       // setTodos(response.data);
       const userTodos = response.data.filter(todo => todo.user === user._id);
       setTodos(userTodos);
+      setTodoCount(userTodos.length);
       console.log("Todos fetched successfully:", response.data);
     } catch (err) {
       console.log("Error fetching todos:", err);
@@ -87,23 +99,23 @@ const Home = () => {
     setTodos((prevTodos) => [...prevTodos, task]);
   };
 
-  // deleting a todo
-  const handleTodoDelete = async (id) => {
-    try {
-      // delete request to remove the todo by its id
-      const result = await axios.delete(`http://localhost:4000/todo/delete/${id}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`
-        },
-        withCredentials: true, // include credentials in the request
-      });
-      console.log(result);
-      // update the state by filtering out the deleted todo
-      setTodos(todos.filter((todo) => todo._id !== id));
-    } catch (err) {
-      console.log("Error deleting todo:", err);
-    }
-  };
+  // // deleting a todo
+  // const handleTodoDelete = async (id) => {
+  //   try {
+  //     // delete request to remove the todo by its id
+  //     const result = await axios.delete(`http://localhost:4000/todo/delete/${id}`, {
+  //       headers: {
+  //           Authorization: `Bearer ${localStorage.getItem('access_token')}`
+  //       },
+  //       withCredentials: true, // include credentials in the request
+  //     });
+  //     console.log(result);
+  //     // update the state by filtering out the deleted todo
+  //     setTodos(todos.filter((todo) => todo._id !== id));
+  //   } catch (err) {
+  //     console.log("Error deleting todo:", err);
+  //   }
+  // };
 
   // marking a todo as completed
   const handleTodoComplete = async (id) => {
@@ -130,54 +142,64 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
-      <div className="title_heading">
-        <h3 className="welcome_user">Welcome {username}</h3>
-        <button className="logout_button" onClick={handleLogout} >Log out</button>
-      </div>
-      <div className="todo_container"> 
-        <h2 className="todo_heading">Todo List</h2>
-        {/* For creating new todos */}
-        <Create addTodo={addTodo} />
-        <br />
-        {
-          // if there are no todos, display a message
-          todos.length === 0 ? (
-            <div>
-              <h2>No tasks available</h2>
-            </div>
-          ) : (
-            todos.map((todo) => (
-              //The key={todo._id} ensures that React can uniquely identify each element in the list. This is critical for React's reconciliation process when updating the DOM.
-              //The id={todo._id} correctly assigns the value of todo._id to the HTML attribute without unnecessary quotes.
-              <div id={todo._id} className="todo" key={todo._id}>
-                
-                {/* Display the task description */}
-                <p className="todo_title">{todo.task.toUpperCase()}</p>
-                {/* Display whether the task is completed or not */}
-                {todo.completed ? <h3>Completed</h3> : <h3>Incomplete</h3>}
-                {/* delete the task */}
-                <div className="icon-container">
-                  
-                    {/* <FaTrash/> */}
-                  {/* </button> */}
-                  {/* To mark task as complete (only if not already completed) */}
-                  {!todo.completed ? (
-                    <FaCheck
-                      type="button"
-                      onClick={() => handleTodoComplete(todo._id)}
-                    />
-                      // <FaCheck />
-                    // </FaCheck>
-                  ) : null}
-                  <FaTrash type="button" onClick={() => handleTodoDelete(todo._id)} />
-                 </div> 
+  <div className="new_home">
+  <div className="left_bar opacity">
+  <h2>{username}'s Notebook</h2>
+  <ul>
+  <button className="new_logout" onClick={handleLogout} >Log out</button>
+  <li className="todo_heading padding10" onClick={() => setActiveContent("todos")}>Todo List ({todoCount})</li>
+  <li className="todo_heading padding10" onClick={() => setActiveContent("notes")}>Notes ({notesCount})</li>
+  </ul>
+  {/* <button className="logout_button" onClick={handleLogout} >Log out</button> */}
+  </div>
+ 
+  {activeContent === "todos" && (
+      <div className="main_content">
+        <h1> Mission: Get stuff done-ish</h1>
+        <Create addTodo={addTodo} todoCount={todoCount} setTodoCount={setTodoCount} />
+        <ul>
+        {todos.length === 0 ? (
+          <div>
+            <h2>No tasks available</h2>
+          </div>
+        ) : (
+          todos.map((todo) => (
+            <div key={todo._id} className="todo_list_item">
+              <div id={todo._id} className={`new_todo opacity ${todo.completed ? 'completed_todo' : 'incomplete_todo'}`} key={todo._id}>
+                <div className="todo_content">
+                  <div className="todo_title">{todo.task.toUpperCase()}</div>
+                  {/* {todo.completed ? <h3>Completed</h3> : <h3>Incomplete</h3>} */}
+                  <div className="todo_icons">
+                    { !todo.completed ? (
+                      <>
+                        <FaCheck 
+                          type="button" 
+                          onClick={() => handleTodoComplete(todo._id)} 
+                        />&nbsp;&nbsp;
+                        <FaTrash 
+                          type="button" 
+                          onClick={() => handleTodoDelete(todo._id)} 
+                        />
+                      </>
+                        ) : null
+                    }
+                  </div>
+                </div>
               </div>
-            ))
-          )
-        }
+            </div>
+          ))   
+        )}
+        </ul>
+        {/* <Create addTodo={addTodo} todoCount={todoCount} setTodoCount={setTodoCount} /> */}
       </div>
-    </div>
+    )}
+
+    {activeContent === "notes" && (
+      <>
+      < Notes sendNotesCount={handleCountFromNotes}/>
+      </>
+    )}
+  </div>
   );
 };
 export default Home;

@@ -12,6 +12,7 @@ const TodoModel = require('./Models/Todo');
 const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/AuthRoute');
 const TodoRoutes = require('./routes/TodoRoutes');
+const NoteRoutes = require('./routes/NoteRoutes');
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' }); 
 const connectDB = require('./db');
@@ -21,7 +22,7 @@ connectDB();
 const app = express();
 
 app.use(cors({origin: '*',
-  origin: 'http://localhost:5182', // Your frontend URL exactly
+  origin: 'http://localhost:5173', // Your frontend URL exactly
   credentials: true // This is important when sending cookies
 }));
 
@@ -37,7 +38,7 @@ app.use("/get" , (req, res) => {
 )
 
 app.use("/todo", TodoRoutes);
-
+app.use("/note", NoteRoutes);
 
 
 const port = process.env.PORT;
