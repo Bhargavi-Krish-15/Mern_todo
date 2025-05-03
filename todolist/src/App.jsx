@@ -20,9 +20,9 @@ function App() {
       <div className='App'>
         {/* <Home /> */}
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/Mern_todo/' element={<Home />} />
+          <Route path='/Mern_todo/login' element={<Login />} />
+          <Route path='/Mern_todo/register' element={<Register />} />
         </Routes>  
       </div>
     </BrowserRouter>
