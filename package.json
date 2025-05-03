@@ -8,9 +8,12 @@
     "react-tooltip": "^5.28.1"
   },
   "scripts": {
-  "build": "cd todolist && npm run build",
-  "start": "cd server && npm start",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
+    "start": "cd server && npm start",
+    "predeploy": "npm run build",
+    "build": "cd todolist && npm run build",
+    "deploy": "gh-pages -d todolist/dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
