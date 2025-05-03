@@ -9,7 +9,7 @@
   padding: 30px;
   background-image: url("pattern.png");
 }
-.create_form input {
+/* .create_form input {
   width: 300px;
   padding: 10px;
   border-bottom: 2px solid #a4c031;
@@ -23,7 +23,7 @@
   cursor: pointer;
   margin-left: 10px;
   border-radius: 3px;
-}
+}*/
 
 .login {
   display: flex;
@@ -39,9 +39,9 @@
 .login form {
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Fill form width */
-  width: 300px; /* Match the input width */
-}
+  align-items: stretch; 
+  width: 300px; 
+} 
 
 .mail_icon {
   position: absolute;
@@ -199,22 +199,22 @@
   background-color: #ddd;
 } */
 
-.todo {
+/* .todo {
   background-color: #a4c031;
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Fixed width */
-  min-height: 100px; /* Minimum height */
-  word-wrap: break-word; /* Ensures long words break */
-  overflow: auto; /* Adds scroll if content exceeds */
+  width: 300px; 
+  min-height: 100px; 
+  word-wrap: break-word; 
+  overflow: auto; 
   border-bottom-left-radius: 15px 255px;
   border-bottom-right-radius: 225px 15px;
   border-top-left-radius: 255px 15px;
   border-top-right-radius: 15px 225px;
   box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
-  border: 2px solid #2d2b2b; /* Optional border */
+  border: 2px solid #2d2b2b; 
   margin-bottom: 32px;
   margin-top: 22px;
   background-image: url("pattern.png");
@@ -225,15 +225,15 @@
   background-color: #b4c0c0;
 }
 
-/* Uniform button styling */
+
 .todo button {
-  padding: 5px 10px; /* Adjust padding as needed */
+  padding: 5px 10px; 
   margin: 5px;
   border: none;
   background-color: #9f9d9d;
   cursor: pointer;
   border-radius: 3px;
-  /* color: rgb(146, 131, 131); */
+ 
 }
 
 .todo button:hover {
@@ -271,7 +271,7 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 30px;
   color: #696969;
-}
+} */
 
 .welcome_user {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -330,13 +330,17 @@
 .new_home {
   display: flex;
   background-image: url("pattern.png");
-  height: 100vh; /* Make sure the home container takes up the full viewport height */
+  min-height: 100vh; /* Make sure the home container takes up the full viewport height */
 }
 
 .left_bar {
-  width: 200px; /* Adjust the width as needed */
+  width: 15rem; /* Adjust the width as needed */
   background-color: #f0f0f0; /* Add a background color for visual separation */
-  padding: 20px;
+  padding: 1.25rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .left_bar h2,
@@ -349,28 +353,37 @@ h1 {
 .left_bar ul {
   list-style: none;
   padding: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s ease;
 }
 
 .left_bar li {
-  margin-top: 10px;
-  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #6a6a6a;
+
 }
 
 .main_content {
   flex: 1;
-  padding: 20px;
+  padding: 1.25rem;
   overflow: auto;
 }
 
 .main_content_note {
-  padding: 20px;
+  padding: 1.25rem;
   display: flex;
-  min-height: "100vh"; /* Ensure it takes up the full height */
-  /* very important for main vertical */
-  flex-direction: column; /* Stack items vertically */
+  min-height: 100vh;
+  flex-direction: column;
   box-sizing: border-box;
-  max-width: 1200px;
-  margin-right: 10px;
+  max-width: 75rem;
+  margin-right: 0.625rem;
   overflow: auto;
 }
 
@@ -378,12 +391,20 @@ h1 {
   background-color: #a4c031;
   color: white;
   /* font-size: 18px; */
-  padding: 10px;
+  padding: 0.625rem;
   border: none;
   cursor: pointer;
   width: 100%;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0.5rem 1rem 1rem -0.75rem;
+  border-radius: 0.25rem;
+}
+
+.new_logout:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0.125rem 0.5rem 0.5rem -0.3125rem;
+  transform: translate3d(0, 0.125rem, 0);
 }
 
 .new_todo {
@@ -401,75 +422,18 @@ h1 {
   background-color: #ddd;
 }
 
-@media (max-width: 768px) {
-  .new_home {
-    flex-direction: column;
-  }
-
-  .left_bar {
-    width: 100%;
-  }
+.active_tab {
+  color: #86a018;
+  font-weight: bold;
 }
 
-/* @media (max-width: 640px) {
-  .new_home {
-    flex-direction: column;
-  }
-
-  .left_bar {
-    width: 100%;
-    padding: 15px;
-    order: 1;
-  }
-
-  .main_content {
-    padding: 15px;
-  }
-
-  .todo_content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .todo_icons {
-    margin-top: 10px;
-    width: 100%;
-    justify-content: flex-end;
-  }
-  
-  .new_todo {
-    padding: 10px;
-  }
-} */
-
-/* Larger Screens */
-@media (min-width: 1200px) {
-  .left_bar {
-    width: 211px; /* Increase sidebar width */
-  }
-
-  .main_content {
-    max-width: 1200px; /* Max width for main content */
-    margin: 0 auto;
-    overflow: auto;
-  }
-}
-
-.todo_list_item {
-  margin-bottom: 10px; /* Adds space between each todo item */
-}
-
-.todo_content {
-  display: flex;
-  justify-content: space-between; /* Distributes space between title and icons */
-  align-items: center; /* Vertically aligns items */
-}
 
 .padding10 {
   padding: 10px;
 }
 
-.notes_container {
+
+/* .notes_container {
   padding: 20px;
 }
 
@@ -480,9 +444,7 @@ h1 {
 }
 
 .notes_list {
-  /* background-color: #f0f0f0;
-  padding: 15px;
-  border-radius: 8px; */
+
   flex: 0 0 250px;
   overflow-y: auto;
   border-right: 1px solid #ddd;
@@ -497,13 +459,7 @@ h1 {
 }
 
 .note_item {
-  /* cursor: pointer;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; */
+  
 
   padding: 10px;
   border-radius: 4px;
@@ -567,7 +523,7 @@ h1 {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* to include padding and border in the element's total width and height */
+  box-sizing: border-box; 
 }
 
 .add_note_form button {
@@ -596,7 +552,7 @@ h1 {
   margin: 0;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .notes_layout {
     flex-direction: column;
   }
@@ -607,7 +563,7 @@ h1 {
     border-right: none;
     border-bottom: 1px solid #ddd;
   }
-} */
+} 
 
 .note_item.active {
   background: #e1e7c7;
@@ -618,7 +574,7 @@ h1 {
   margin-top: 20px;
   display: flex;
   color: #a4c031;
-  /* gap: 10px; */
+  
 }
 
 .note-actions button {
@@ -634,8 +590,9 @@ h1 {
 
 .note-actions button:hover {
   background: #f0f0f0;
-}
+} */
 
+/* npt needded */
 /* .notes_layout {
   display: grid;
   flex-direction: row;
@@ -664,3 +621,8 @@ h1 {
 .notes_layout.desktop .notes_list {
   width: 400px; 
 } */
+
+.mood_tracker h3{
+  align-items: center;
+  color: #6a6a6a;
+}

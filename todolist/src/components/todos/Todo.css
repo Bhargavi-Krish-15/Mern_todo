@@ -1,0 +1,142 @@
+.create_form input {
+  width: 800px;
+  padding: 10px;
+  border-bottom: 2px solid #a4c031;
+  /* outline: none; */
+}
+.create_form button {
+  padding: 10px;
+  border: none;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 3px;
+}
+
+
+
+.todo {
+  background-color: #a4c031;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width */
+  min-height: 100px; /* Minimum height */
+  word-wrap: break-word; /* Ensures long words break */
+  overflow: auto; /* Adds scroll if content exceeds */
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+  border: 2px solid #2d2b2b; /* Optional border */
+  margin-bottom: 32px;
+  margin-top: 22px;
+  background-image: url("pattern.png");
+  color: #353535;
+}
+
+.todo:hover {
+  background-color: #b4c0c0;
+}
+
+/* Uniform button styling */
+.todo button {
+  padding: 5px 10px; /* Adjust padding as needed */
+  margin: 5px;
+  border: none;
+  background-color: #9f9d9d;
+  cursor: pointer;
+  border-radius: 3px;
+  /* color: rgb(146, 131, 131); */
+}
+
+.todo button:hover {
+  background-color: #d2b5b5;
+}
+
+.todo_container {
+  border: 2px solid #ecede9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  background-color: #d7dcbf;
+  padding-left: 40px;
+}
+
+.opacity {
+  opacity: 0.8;
+}
+
+.todo_heading {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: #3f3f3f;
+}
+
+.todo_title {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: #242424;
+}
+
+.tag_line {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  color: #696969;
+}
+@media (min-width: 1200px) {
+  .left_bar {
+    width: 211px; /* Increase sidebar width */
+  }
+
+  .main_content {
+    max-width: 1200px; /* Max width for main content */
+    margin: 0 auto;
+    overflow: auto;
+  }
+}
+
+.todo_list_item {
+  margin-bottom: 10px; /* Adds space between each todo item */
+  padding: 10px;
+}
+
+.todo_content {
+  display: flex;
+  justify-content: space-between; /* Distributes space between title and icons */
+  align-items: center; /* Vertically aligns items */
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+/* left bar  */
+.left_bar {
+  width: 200px; /* Adjust the width as needed */
+  background-color: #f0f0f0; /* Add a background color for visual separation */
+  padding: 20px;
+}
+
+.left_bar h2,
+h1 {
+  margin-bottom: 20px;
+  font-size: 34px;
+  color: #86a018;
+}
+
+.left_bar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left_bar li {
+  margin-top: 10px;
+  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+}

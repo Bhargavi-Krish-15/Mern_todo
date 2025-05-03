@@ -13,16 +13,19 @@ const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/AuthRoute');
 const TodoRoutes = require('./routes/TodoRoutes');
 const NoteRoutes = require('./routes/NoteRoutes');
+const MoodTrackerRoutes = require('./routes/MoodTrackerRoute');
+const PomodoroRoutes = require('./routes/PomodoroRoute');
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' }); 
 const connectDB = require('./db');
+const MoodTracker = require('./Models/MoodTracker');
 connectDB();
 
 
 const app = express();
 
 app.use(cors({origin: '*',
-  origin: 'http://localhost:5173', // Your frontend URL exactly
+  origin: 'http://localhost:5179', 
   credentials: true // This is important when sending cookies
 }));
 
@@ -39,6 +42,8 @@ app.use("/get" , (req, res) => {
 
 app.use("/todo", TodoRoutes);
 app.use("/note", NoteRoutes);
+app.use("/mood", MoodTrackerRoutes);
+app.use("pomodoro", PomodoroRoutes);
 
 
 const port = process.env.PORT;
