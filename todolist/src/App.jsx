@@ -16,7 +16,7 @@ function App() {
     // Route is used to define a single route
     // The path prop specifies the URL path for the route
     // The element prop specifies the component to render when the route is matched
-    <BrowserRouter>
+    <BrowserRouter basename="/Mern_todo">
       <div className='App'>
         {/* <Home /> */}
         <Routes>
