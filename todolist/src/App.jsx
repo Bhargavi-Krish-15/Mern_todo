@@ -17,14 +17,11 @@ function App() {
     // The path prop specifies the URL path for the route
     // The element prop specifies the component to render when the route is matched
     <BrowserRouter basename="/Mern_todo">
-      <div className='App'>
-        {/* <Home /> */}
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
-        </Routes>  
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </BrowserRouter>
   )
 }
