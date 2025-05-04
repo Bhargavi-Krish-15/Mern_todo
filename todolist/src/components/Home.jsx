@@ -598,6 +598,8 @@ import Notes from "./notes/Notes";
 import Todo from "./todos/Todo";
 import MoodTracker from "./moodtracker/MoodTracker";
 import Pomodoro from "./pomodoro/Pomodoro";
+import { useNavigate } from 'react-router-dom';
+
 
 // More aggressive scaling (down to 0.5x)
 const BASE_WIDTH = 1440;
@@ -613,10 +615,13 @@ const Home = () => {
   const [todoCount, setTodoCount] = useState(0);
   const [notesCount, setNotesCount] = useState(null);
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const user_str = localStorage.getItem("user");
     if (!user_str) {
-      window.location.href = "/login";
+      // window.location.href = "/login";
+      navigate('/login');
       return;
     }
 
@@ -638,7 +643,7 @@ const Home = () => {
         withCredentials: true,
       });
       localStorage.removeItem("user");
-      window.location.href = "/login";
+      navigate('/login');
     } catch (err) {
       console.log("Error logging out:", err);
     }

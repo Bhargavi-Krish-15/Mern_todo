@@ -197,6 +197,7 @@ import axios from "axios";
 import { FaTrash, FaCheck } from "react-icons/fa";
 import Create from "./Create";
 import "./Todo.css";
+import { useNavigate } from 'react-router-dom';
 
 // Responsive root font-size logic (using rem only)
 // const BASE_WIDTH = 1440;
@@ -208,6 +209,7 @@ import "./Todo.css";
 
 const Todo = ({ setTodoCount }) => {
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate(); 
   // const [isNarrow, setIsNarrow] = useState(window.innerWidth < 768);
 
   // Set root font-size on mount and resize
@@ -228,7 +230,7 @@ const Todo = ({ setTodoCount }) => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
       if (!user) {
-        window.location.href = "/login";
+        navigate('/login');
         return;
       }
 
@@ -247,7 +249,7 @@ const Todo = ({ setTodoCount }) => {
       console.log("Error fetching todos:", err);
       if (err.response && err.response.status === 401) {
         localStorage.removeItem("user");
-        window.location.href = "/login";
+        navigate('/login');
       }
     }
   };

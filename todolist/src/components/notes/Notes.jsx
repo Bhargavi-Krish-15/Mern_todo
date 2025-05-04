@@ -388,6 +388,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { FaTrash, FaEdit, FaTimes } from 'react-icons/fa';
 import './Notes.css';
+import { useNavigate } from 'react-router-dom';
 
 const Notes = ({ sendNotesCount }) => {
   const [notes, setNotes] = useState([]);
@@ -405,11 +406,13 @@ const Notes = ({ sendNotesCount }) => {
   // For responsive layout (not for scaling)
   const [isNarrow, setIsNarrow] = useState(window.innerWidth < 768);
 
+     const navigate = useNavigate();
+     
   const fetchNotes = async () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) {
-        window.location.href = '/login';
+        navigate('/login');
         return;
       }
       const response = await axios.get("http://localhost:4000/note/get", {
@@ -444,7 +447,7 @@ const Notes = ({ sendNotesCount }) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) {
-        window.location.href = '/login';
+        navigate('/login');
         return;
       }
       const newNote = {
@@ -475,7 +478,7 @@ const Notes = ({ sendNotesCount }) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) {
-        window.location.href = '/login';
+        navigate('/login');
         return;
       }
       const updatedNote = {
@@ -502,7 +505,7 @@ const Notes = ({ sendNotesCount }) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       if (!user) {
-        window.location.href = '/login';
+        navigate('/login');
         return;
       }
       await axios.delete(`http://localhost:4000/note/delete/${noteId}`, {

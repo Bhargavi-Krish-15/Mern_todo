@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { FiLogIn } from "react-icons/fi";
 import{FaEnvelope, FaLock, FaUser} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -9,6 +10,8 @@ const Register = () => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
+
+    const navigate = useNavigate();
     
     const handleRegister = async (e) => {
         // Prevent the default form submission behavior
@@ -32,7 +35,8 @@ const Register = () => {
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 setMessage("Registration successful");
                 // Redirect to the home page after successful login
-                window.location.href = '/login';
+                // window.location.href = '/login';
+                navigate('/login');
             }
         }catch(err){
             console.log(err);
