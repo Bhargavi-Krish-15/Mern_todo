@@ -1,4 +1,6 @@
 {
+  "homepage": "https://bhargavi-krish-15.github.io/Mern_todo",
+
   "dependencies": {
     "axios": "^1.8.4",
     "react-cookie": "^8.0.1",

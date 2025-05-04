@@ -198,28 +198,30 @@ import { FaTrash, FaCheck } from "react-icons/fa";
 import Create from "./Create";
 import "./Todo.css";
 
-// // Responsive root font-size logic (using rem only)
+// Responsive root font-size logic (using rem only)
 // const BASE_WIDTH = 1440;
 
 // function setResponsiveFontSize() {
 //   const scale = Math.min(Math.max(window.innerWidth / BASE_WIDTH, 0.75), 1);
-//   document.documentElement.style.fontSize = `${scale}rem`;
+//   document.documentElement.style.fontSize = "1rem"; // Set base font size to 1rem
 // }
 
 const Todo = ({ setTodoCount }) => {
   const [todos, setTodos] = useState([]);
-  const [isNarrow, setIsNarrow] = useState(window.innerWidth < 768);
+  // const [isNarrow, setIsNarrow] = useState(window.innerWidth < 768);
 
   // Set root font-size on mount and resize
-  useEffect(() => {
-    // setResponsiveFontSize();
-    const handleResize = () => {
-        console.log('isNarrow', isNarrow)
-      setIsNarrow(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  //   setResponsiveFontSize();
+  //   // const handleResize = () => {
+  //   //     console.log('isNarrow', isNarrow)
+  //   //   setIsNarrow(window.innerWidth < 768);
+  //   // };
+  //   // window.addEventListener("resize", handleResize);
+  //   // return () => window.removeEventListener("resize", handleResize);
+  //   window.addEventListener("resize", setResponsiveFontSize);
+  //   return () => window.removeEventListener("resize", setResponsiveFontSize);
+  // }, []);
 
   // Fetch todos from the server
   const fetchTodos = async () => {
