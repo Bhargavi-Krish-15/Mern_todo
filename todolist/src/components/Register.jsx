@@ -69,7 +69,7 @@ const Register = () => {
                 </div>
                 <button type="submit">Register</button>
                 <p className='new_user'>Already have an account? 
-                    <a href='/login'><FiLogIn/></a>
+                    <a href='/Mern_todo/login'><FiLogIn/></a>
                 </p>
             </form>
         </div>

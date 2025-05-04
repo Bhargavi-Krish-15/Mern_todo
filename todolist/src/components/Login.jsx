@@ -58,7 +58,7 @@ const Login = () => {
                 </div>
                 <button type="submit">Login</button>
                 <p className='new_user'>Never been organized?
-                    <a href='/register'><FaEye /></a>
+                    <a href='/Mern_todo/register'><FaEye /></a>
                 </p>
             </form>
         </div>
