@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { FiLogIn } from "react-icons/fi";
 import{FaEnvelope, FaLock, FaUser} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
 
@@ -69,7 +69,8 @@ const Register = () => {
                 </div>
                 <button type="submit">Register</button>
                 <p className='new_user'>Already have an account? 
-                    <a href='/Mern_todo/login'><FiLogIn/></a>
+                    {/* <a href='/Mern_todo/login'><FiLogIn/></a> */}
+                    <Link to="/login"><FiLogIn /></Link>
                 </p>
             </form>
         </div>

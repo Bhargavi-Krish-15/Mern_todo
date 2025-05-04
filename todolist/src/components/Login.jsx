@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import{FaEye, FaEnvelope, FaLock} from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = React.useState('');
@@ -58,7 +59,8 @@ const Login = () => {
                 </div>
                 <button type="submit">Login</button>
                 <p className='new_user'>Never been organized?
-                    <a href='/Mern_todo/register'><FaEye /></a>
+                    {/* <a href='/Mern_todo/register'><FaEye /></a> */}
+                    <Link to="/register"><FaEye /></Link>
                 </p>
             </form>
         </div>
