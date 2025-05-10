@@ -25,7 +25,7 @@ connectDB();
 const app = express();
 
 app.use(cors({origin: '*',
-  origin: 'http://localhost:5181', 
+  origin: 'http://localhost:5173', 
   credentials: true // This is important when sending cookies
 }));
 
